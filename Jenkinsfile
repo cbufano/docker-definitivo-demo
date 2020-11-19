@@ -38,18 +38,10 @@ pipeline {
                 
                 sh  '''
 
+                    docker service update --image registry.oragon.io/demo/app_demo_1:${BRANCH_NAME:-master} demo
+
                
                 '''
-
-                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'SERVER_ADMIN', \
-                                             keyFileVariable: 'SERVER_ADMIN_KEY', \
-                                             passphraseVariable: 'SERVER_ADMIN_PWD', \
-                                             usernameVariable: 'SERVER_ADMIN_USER')]) {
-                    sh  '''
-                    
-
-                    '''
-                }                
 
             }
 
